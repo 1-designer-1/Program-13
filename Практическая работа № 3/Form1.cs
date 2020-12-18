@@ -50,6 +50,7 @@ namespace Практическая_работа___3
         /// <returns>двумерный массив</returns>
         private void PrintArray(int[,] array)
         {
+
             int columns = dataGridView1.ColumnCount;
             int rows = dataGridView1.RowCount;
 
@@ -60,15 +61,17 @@ namespace Практическая_работа___3
                     dataGridView1[i, j].Value = array[j, i];
                 }
             }
+
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Серегин Денис.\n" +
                 "группа ИСП-31.\n" +
-                "Вариант 11.\n" +
-                "Дана матрица размера M × N. Найти количество ее строк, элементы которых упорядочены по возрастанию.\n" );     
-                         
+                "Вариант 13.\n" +
+                "Дана матрица размера M × N. Для каждого столбца матрицы с четным номером (2, 4, …) найти сумму его элементов." +
+                " Условный оператор не использовать.\n");
+
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,19 +81,28 @@ namespace Практическая_работа___3
 
         private void заполнитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            int rows = (int)numericUpDown1.Value;
-            int columns = (int)numericUpDown2.Value;
-            dataGridView1.ColumnCount = columns;
-            dataGridView1.RowCount = rows;
-            PrintArray(Arry.Rand(rows, columns));
-            int[,] array = GetArray();
-            listBox1.Items.Clear();
-            foreach (int summaElementov in Job.JobArrey(array))
+            try
             {
-                listBox1.Items.Add(summaElementov);
-                textBox1.Text += summaElementov.ToString()+ " ";
+                int rows = (int)numericUpDown1.Value;
+                int columns = (int)numericUpDown2.Value;
+                dataGridView1.ColumnCount = columns;
+                dataGridView1.RowCount = rows;
+                PrintArray(Arry.Rand(rows, columns));
+                int[,] array = GetArray();
+                listBox1.Items.Clear();
+                textBox1.Clear();
+                foreach (int summaElementov in Job.JobArrey(array))
+                {
+                    listBox1.Items.Add(summaElementov);
+                    textBox1.Text += summaElementov.ToString() + " ";
+                }
             }
+            catch
+            {
+
+                MessageBox.Show("Введите значение таблицы");
+            }
+
 
         }
 
@@ -141,16 +153,16 @@ namespace Практическая_работа___3
                 //Если пользователь нажал ОК
                 if (open.ShowDialog() == DialogResult.OK)
                 {
-                    
+
                     int[,] arry = GetArray();
                     Arry.OpenArray(arry, open.FileName);
                     PrintArray(arry);
-                   
+
                 }
             }
 
         }
 
-    
+
     }
 }
