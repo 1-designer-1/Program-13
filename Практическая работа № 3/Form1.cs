@@ -14,12 +14,17 @@ namespace Практическая_работа___3
 {
     public partial class Form1 : Form
     {
-        int[,] randomMass;
+       
         Task1 Arry = new Task1();
         Class1 Job = new Class1();
         public Form1()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(this.numericUpDown1, "Количество строк");
+            toolTip1.SetToolTip(this.numericUpDown2, "Количество столбцов");
+            toolTip1.SetToolTip(this.textBox1, "Сумма в четных столбцах таблицы");
+            toolStripStatusLabel1.Text = "Размер таблицы " + dataGridView1.RowCount.ToString() + "x" + dataGridView1.ColumnCount.ToString();
         }
 
         /// <summary>
@@ -42,6 +47,7 @@ namespace Практическая_работа___3
             }
 
             return array;
+            
         }
 
         /// <summary>
@@ -96,6 +102,7 @@ namespace Практическая_работа___3
                     // listBox1.Items.Add(summaElementov);
                     textBox1.Text += summaElementov.ToString() + " ";
                 }
+                toolStripStatusLabel1.Text = "Размер таблицы " + dataGridView1.RowCount.ToString() + "x" + dataGridView1.ColumnCount.ToString();
             }
             catch
             {
