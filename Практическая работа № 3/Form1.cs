@@ -89,11 +89,11 @@ namespace Практическая_работа___3
                 dataGridView1.RowCount = rows;
                 PrintArray(Arry.Rand(rows, columns));
                 int[,] array = GetArray();
-                listBox1.Items.Clear();
+                // listBox1.Items.Clear();
                 textBox1.Clear();
                 foreach (int summaElementov in Job.JobArrey(array))
                 {
-                    listBox1.Items.Add(summaElementov);
+                    // listBox1.Items.Add(summaElementov);
                     textBox1.Text += summaElementov.ToString() + " ";
                 }
             }
@@ -162,7 +162,5 @@ namespace Практическая_работа___3
             }
 
         }
-
-
     }
 }
