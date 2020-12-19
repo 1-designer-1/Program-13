@@ -24,6 +24,7 @@ namespace Практическая_работа___3
             toolTip1.SetToolTip(this.numericUpDown1, "Количество строк");
             toolTip1.SetToolTip(this.numericUpDown2, "Количество столбцов");
             toolTip1.SetToolTip(this.textBox1, "Сумма в четных столбцах таблицы");
+            toolTip1.SetToolTip(this.button4, "Жми");
             toolStripStatusLabel1.Text = "Размер таблицы " + dataGridView1.RowCount.ToString() + "x" + dataGridView1.ColumnCount.ToString();
         }
 
@@ -168,6 +169,27 @@ namespace Практическая_работа___3
                 }
             }
 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)// панел инструментов
+        {
+            //Создание объекта диалогового окна для сохранения
+            using (SaveFileDialog save = new SaveFileDialog
+            {
+                //Установка стандартных свойств
+                DefaultExt = ".txt",
+                Filter = "Все файлы (*.*) | *.* |Текстовые файлы | *.txt",
+                FilterIndex = 2,
+                Title = "Сохранение таблицы"
+            })
+            {
+                //Если пользователь нажал ОК
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    //Сохранить массив
+                    Arry.SaveArray(GetArray(), save.FileName);
+                }
+            }
         }
     }
 }
